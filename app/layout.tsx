@@ -15,9 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Providers>
-        <body className="dark">{children}</body>
-      </Providers>
+      <head>
+        <title>X-CLONE</title>
+      </head>
+      <body className="dark">
+        <Providers>{children}</Providers>
+      </body>
     </html>
   )
 }

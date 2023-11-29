@@ -8,8 +8,13 @@ import type { Database } from './types/database'
 import type { Tweet } from './types/tweets'
 import ComposeTweet from './components/compose-tweet'
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
-  const supabase = createServerComponentClient<Database>({ cookies })
+  const cookieStore = cookies()
+  const supabase = createServerComponentClient<Database>({
+    cookies: () => cookieStore,
+  })
 
   const {
     data: { session },

@@ -9,8 +9,10 @@ export const addPost = async (formData: FormData) => {
 
   if (content === null) return
 
-  const supabase = createServerActionClient({ cookies })
-  // revisar si el usuario realmene está autentificado
+  const cookieStore = cookies()
+
+  const supabase = createServerActionClient({ cookies: () => cookieStore })
+
   const {
     data: { user },
   } = await supabase.auth.getUser()
